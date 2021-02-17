@@ -1,17 +1,11 @@
 <template>
   <div id="category">
-    <Header />
+    <Header title="分类" />
     <div class="listWrapper" v-if="!showLoading">
       <div class="leftWrapper">
         <ul class="wrapper">
-          <li
-            class="categoryItem"
-            v-for="(cate, index) in categoriesData"
-            :class="{selected: currentIndex === index}"
-            :key="cate.id"
-            @click="clickLeftLi(index)"
-            ref="menuList"
-          >
+          <li class="categoryItem" v-for="(cate, index) in categoriesData" :class="{selected: currentIndex === index}"
+            :key="cate.id" @click="clickLeftLi(index)" ref="menuList">
             <span class="textWrapper">{{cate.name}}</span>
           </li>
         </ul>
@@ -19,17 +13,13 @@
       <ContentView :categoriesDetailData="categoriesDetailData" />
     </div>
 
-    <van-loading
-      v-else
-      type="spinner"
-      color="#75a342"
-      style="position: absolute;left:50%;top: 40%;transform: translate(-50%)"
-    >小撩正在拼命加载中…</van-loading>
+    <van-loading v-else type="spinner" color="#75a342"
+      style="position: absolute;left:50%;top: 40%;transform: translate(-50%)">小撩正在拼命加载中…</van-loading>
   </div>
-</template>
+</template> 
 
 <script>
-import Header from './components/Header'
+import Header from '@/components/Header'
 import ContentView from './components/ContentView'
 import BScroll from 'better-scroll'
 import { getCategories, getCategoriesDetail } from '@/service/axios/index'
@@ -52,7 +42,7 @@ export default {
   methods: {
     // 页面初始化
     async initData () {
-      // 1. 获取分类的数据
+      // 1. 获取左边的数据
       let leftRes = await getCategories();
       if (leftRes.success) {
         this.categoriesData = leftRes.data.cate;

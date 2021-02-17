@@ -1,18 +1,12 @@
 <template>
   <div id="mine">
-    <!-- v-if="userInfo.token" -->
-    <van-nav-bar title="我的" :fixed="true" :border="false"></van-nav-bar>
+    <Header title="我的" />
 
     <!--用户-->
     <van-cell-group style="margin-top: 2.6rem">
-      <van-cell
-        style="ba
-        ckground-color: #3bba63; color: #fff"
-        label-class="labelClass"
-        is-link
-        :center="true"
-        @click="$router.push('/dashboard/mine/userCenter')"
-      >
+      <van-cell style="ba
+        ckground-color: #3bba63; color: #fff" label-class="labelClass" is-link :center="true"
+        @click="$router.push('/dashboard/mine/userCenter')">
         <template slot="title">
           <div class="personMsg">
             <img class="iconImage" src="./images/detail1.jpg" alt />
@@ -29,55 +23,31 @@
 
     <!--我的订单-->
     <van-cell-group>
-      <van-cell
-        title="我的订单"
-        icon="label"
-        value="查看全部订单"
-        @click="$router.push({ path: '/dashboard/mine/mineOrder' })"
-        is-link
-      ></van-cell>
+      <van-cell title="我的订单" icon="label" value="查看全部订单" @click="$router.push({ path: '/dashboard/mine/mineOrder' })"
+        is-link></van-cell>
       <router-link tag="div" :to="{ path: '/dashboard/mine/mineOrder' }">
         <van-grid>
-          <van-grid-item
-            v-for="(order, index) in orderData"
-            :key="index"
-            :icon="order.icon"
-            :text="order.title"
-          ></van-grid-item>
+          <van-grid-item v-for="(order, index) in orderData" :key="index" :icon="order.icon" :text="order.title">
+          </van-grid-item>
         </van-grid>
       </router-link>
     </van-cell-group>
 
     <!--我的优惠券-->
     <van-cell-group style="margin-top: 0.4rem">
-      <van-cell
-        title="我的优惠券"
-        icon="gold-coin"
-        value="1张"
-        is-link
-      ></van-cell>
+      <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>
       <van-cell title="我的收货地址" icon="todo-list" is-link></van-cell>
     </van-cell-group>
 
     <!--联系客服-->
     <van-cell-group style="margin-top: 0.4rem">
-      <van-cell
-        title="联系客服"
-        icon="phone"
-        value="客服时间 07:00-22:00"
-        is-link
-      ></van-cell>
+      <van-cell title="联系客服" icon="phone" value="客服时间 07:00-22:00" is-link></van-cell>
       <van-cell title="意见反馈" icon="smile-comment" is-link></van-cell>
     </van-cell-group>
 
     <!--小撩买菜-->
     <van-cell-group style="margin-top: 0.4rem">
-      <van-cell
-        title="小撩买菜"
-        icon="gift-card"
-        value="下载APP体验更佳"
-        is-link
-      ></van-cell>
+      <van-cell title="小撩买菜" icon="gift-card" value="下载APP体验更佳" is-link></van-cell>
     </van-cell-group>
 
     <!--路由的出口-->
@@ -88,6 +58,7 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 export default {
   data () {
     return {
@@ -100,7 +71,7 @@ export default {
     };
   },
 
-  components: {},
+  components: { Header },
 
   created () { },
 

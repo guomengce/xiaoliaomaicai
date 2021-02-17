@@ -1,11 +1,7 @@
 <template>
   <div id="cart">
     <!--头部区域-->
-    <header class="titleWrapper">
-      <h4>
-        <strong>购物车</strong>
-      </h4>
-    </header>
+    <Header title="购物车" />
     <div class="contentWrapper">
       <!--中间内容-->
       <main class="contentWrapperList">
@@ -50,6 +46,7 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 export default {
   data () {
     return {
@@ -60,7 +57,7 @@ export default {
 
   // 2.786*2100
 
-  components: {},
+  components: { Header },
 
   created () {
     let list = JSON.parse(sessionStorage.getItem('list'));

@@ -1,28 +1,25 @@
 <template>
   <div id="dashboard">
-    <van-tabbar v-model="active" route>
-      <van-tabbar-item to="/dashboard/home" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item to="/dashboard/category" icon="search"
-        >分类</van-tabbar-item
-      >
-      <van-tabbar-item to="/dashboard/cart" icon="friends-o"
-        >购物车</van-tabbar-item
-      >
-      <van-tabbar-item to="/dashboard/mine" icon="setting-o"
-        >我的</van-tabbar-item
-      >
-      <!-- <van-tabbar-item to="/dashboard/text" icon="setting-o">测试</van-tabbar-item> -->
-    </van-tabbar>
 
     <!-- 不经常改变的页面做页面缓存 -->
     <keep-alive>
       <router-view v-if="$route.meta.keepalive" />
     </keep-alive>
     <router-view v-if="!$route.meta.keepalive" />
+
+    <!-- tabbar -->
+    <van-tabbar v-model="active" route>
+      <van-tabbar-item to="/dashboard/home" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item to="/dashboard/category" icon="search">分类</van-tabbar-item>
+      <van-tabbar-item to="/dashboard/cart" icon="friends-o">购物车</van-tabbar-item>
+      <van-tabbar-item to="/dashboard/mine" icon="setting-o">我的</van-tabbar-item>
+      <!-- <van-tabbar-item to="/dashboard/text" icon="setting-o">测试</van-tabbar-item> -->
+    </van-tabbar>
   </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
